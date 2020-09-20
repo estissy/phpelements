@@ -10,11 +10,15 @@
     }
   ],
   "require": {
-    "php": "7.4"
+    "php": "^7.4"
   },
   "autoload": {
     "psr-4": {
       "Elements\\": "src/"
     }
+  },
+  "require-dev": {
+    "vimeo/psalm": "^3.16",
+    "squizlabs/php_codesniffer": "*"
   }
 }

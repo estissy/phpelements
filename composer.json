@@ -1,0 +1,13 @@
+{
+    "name": "estissy/phpelements",
+    "description": "Set of html elements",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jakub Wietecha",
+            "email": "estissy@gmail.com"
+        }
+    ],
+    "require": {}
+}

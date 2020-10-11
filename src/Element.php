@@ -92,6 +92,7 @@ abstract class Element extends Node
 
     /**
      * @return bool
+     * @psalm-assert-if-true !null $this->enterKeyHint
      */
     public function hasEnterKeyHint(): bool
     {
@@ -121,6 +122,7 @@ abstract class Element extends Node
 
     /**
      * @return bool
+     * @psalm-assert-if-true !null $this->draggable
      */
     public function hasDraggable(): bool
     {
@@ -150,6 +152,7 @@ abstract class Element extends Node
 
     /**
      * @return bool
+     * @psalm-assert-if-true !null $this->dir
      */
     public function hasDir(): bool
     {
@@ -157,7 +160,7 @@ abstract class Element extends Node
     }
 
     /**
-     * @return null|\Elements\Keyword\ContentEditableKeyword
+     * @return \Elements\Keyword\ContentEditableKeyword
      * @throws \DomainException
      */
     public function getContentEditable(): ContentEditableKeyword
@@ -179,6 +182,7 @@ abstract class Element extends Node
 
     /**
      * @return bool
+     * @psalm-assert-if-true !null $this->contentEditable
      */
     public function hasContentEditable(): bool
     {

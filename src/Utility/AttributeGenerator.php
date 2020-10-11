@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Elements\Utility;
 
 use Elements\AttributeValue;
+use Elements\BooleanAttribute;
 use Elements\Element;
 use ReflectionClass;
 use ReflectionNamedType;
@@ -31,6 +32,10 @@ class AttributeGenerator
         $attributeProperties = self::getAttributeProperties($properties);
         $notNullProperties = self::getNotNullProperties($attributeProperties, $tagElement);
 
+        $booleanAttributeProperties = self::getBooleanAttributeProperties($properties);
+        $trueBooleanAttributeProperties = self::getTrueBooleanProperties($booleanAttributeProperties, $tagElement);
+        $trueBooleanAttributePropertyNames = self::getPropertyNames($trueBooleanAttributeProperties);
+
         $propertyNames = self::getPropertyNames($notNullProperties);
         $propertyValues = self::getPropertyValues($notNullProperties, $tagElement);
 
@@ -44,7 +49,8 @@ class AttributeGenerator
             $propertyValues
         );
 
-        return implode('', $tagAttributes);
+        $attributes = array_merge($tagAttributes, $trueBooleanAttributePropertyNames);
+        return implode(' ', $attributes);
     }
 
     /**
@@ -82,6 +88,42 @@ class AttributeGenerator
             static function (ReflectionProperty $reflectionProperty) use ($tagElement): bool {
                 $reflectionProperty->setAccessible(true);
                 return $reflectionProperty->getValue($tagElement) !== null;
+            }
+        );
+    }
+
+    /**
+     * @param \ReflectionProperty[] $properties
+     *
+     * @return \ReflectionProperty[]
+     */
+    private static function getBooleanAttributeProperties(array $properties): array
+    {
+        return array_filter(
+            $properties,
+            static function (ReflectionProperty $reflectionProperty) {
+                $reflectionPropertyType = $reflectionProperty->getType();
+
+                return $reflectionPropertyType instanceof ReflectionNamedType &&
+                    is_a($reflectionPropertyType->getName(), BooleanAttribute::class, true);
+            }
+        );
+    }
+
+    /**
+     * @param \ReflectionProperty[] $booleanProperties
+     * @param \Elements\Element     $tagElement
+     *
+     * @return \ReflectionProperty[]
+     */
+    private static function getTrueBooleanProperties(array $booleanProperties, Element $tagElement): array
+    {
+        return array_filter(
+            $booleanProperties,
+            static function (ReflectionProperty $reflectionProperty) use ($tagElement) {
+                $reflectionProperty->setAccessible(true);
+
+                return BooleanAttribute::true()->equal($reflectionProperty->getValue($tagElement));
             }
         );
     }

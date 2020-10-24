@@ -7,10 +7,18 @@ namespace Elements;
 use DomainException;
 use Elements\Keyword\AutocapitalizeKeyword;
 use Elements\Keyword\ContentEditableKeyword;
+use Elements\Keyword\CustomElementName;
 use Elements\Keyword\DirKeyword;
 use Elements\Keyword\DraggableKeyword;
 use Elements\Keyword\EnterKeyHintKeyword;
+use Elements\Keyword\InputModeKeyword;
+use Elements\Keyword\LanguageKeyword;
+use Elements\Keyword\SpellcheckKeyword;
+use Elements\Keyword\TranslateKeyword;
 use Elements\Microsyntax\SpaceSeparatedTokens\OrderedUniqueSpaceSeparatedTokens;
+use Elements\Microsyntax\SpaceSeparatedTokens\UnorderedUniqueSpaceSeparatedTokens;
+use Elements\Number\IntegerValue;
+use Elements\Url\UrlPotentiallySurroundedBySpaces;
 
 /**
  * Class Element
@@ -60,6 +68,89 @@ abstract class Element extends Node
     protected ?EnterKeyHintKeyword $enterKeyHint = null;
 
     /**
+     * @var \Elements\BooleanAttribute
+     */
+    protected BooleanAttribute $hidden;
+
+    /**
+     * @var null|\Elements\Keyword\InputModeKeyword
+     */
+    protected ?InputModeKeyword $inputMode = null;
+
+    /**
+     * @var null|\Elements\Keyword\CustomElementName
+     */
+    protected ?CustomElementName $is = null;
+
+    /**
+     * @var null|\Elements\Url\UrlPotentiallySurroundedBySpaces
+     */
+    protected ?UrlPotentiallySurroundedBySpaces $itemId = null;
+
+    /**
+     * @var null|\Elements\Microsyntax\SpaceSeparatedTokens\UnorderedUniqueSpaceSeparatedTokens
+     */
+    protected ?UnorderedUniqueSpaceSeparatedTokens $itemProp = null;
+
+    /**
+     * @var null|\Elements\Microsyntax\SpaceSeparatedTokens\UnorderedUniqueSpaceSeparatedTokens
+     */
+    protected ?UnorderedUniqueSpaceSeparatedTokens $itemRef = null;
+
+    /**
+     * @var \Elements\BooleanAttribute
+     */
+    protected BooleanAttribute $itemScope;
+
+    /**
+     * @var null|\Elements\Microsyntax\SpaceSeparatedTokens\UnorderedUniqueSpaceSeparatedTokens
+     */
+    protected ?UnorderedUniqueSpaceSeparatedTokens $itemType = null;
+
+    /**
+     * @var null|\Elements\Keyword\LanguageKeyword
+     */
+    protected ?LanguageKeyword $lang = null;
+
+    /**
+     * @var null|string
+     * @TODO: Implement this
+     */
+    protected string $nonce;
+
+    /**
+     * @var null|\Elements\Keyword\SpellcheckKeyword
+     */
+    protected ?SpellcheckKeyword $spellcheck = null;
+
+    /**
+     * @var null|string
+     * @TODO: Implement this
+     */
+    protected ?string $style = null;
+
+    /**
+     * @var null|\Elements\Number\IntegerValue
+     */
+    protected ?IntegerValue $tabIndex = null;
+
+    /**
+     * The title attribute represents advisory information for the element, such as would be appropriate for a tooltip.
+     * On a link, this could be the title or a description of the target resource; on an image, it could be the image
+     * credit or a description of the image; on a paragraph, it could be a footnote or commentary on the text; on a
+     * citation, it could be further information about the source; on interactive content, it could be a label for, or
+     * instructions for, use of the element; and so forth. The value is text.
+     *
+     * @var null|\Elements\AttributeValue
+     */
+    protected ?AttributeValue $title = null;
+
+    /**
+     * @var null|\Elements\Keyword\TranslateKeyword
+     */
+    protected ?TranslateKeyword $translate = null;
+
+    /**
      * @param string $tag
      */
     public function __construct(string $tag)
@@ -67,6 +158,434 @@ abstract class Element extends Node
         $this->tag = $tag;
 
         $this->autofocus = BooleanAttribute::false();
+        $this->hidden = BooleanAttribute::false();
+        $this->itemScope = BooleanAttribute::false();
+    }
+
+    /**
+     * @return \Elements\Keyword\TranslateKeyword
+     * @throws \DomainException
+     */
+    public function getTranslate(): TranslateKeyword
+    {
+        if (!$this->hasTranslate()) {
+            throw new DomainException('Property translate is not set.');
+        }
+
+        return $this->translate;
+    }
+
+    /**
+     * @param \Elements\Keyword\TranslateKeyword $translate
+     */
+    public function setTranslate(TranslateKeyword $translate): void
+    {
+        $this->translate = $translate;
+    }
+
+    /**
+     * @return bool
+     * @psalm-assert-if-true !null $this->translate
+     */
+    public function hasTranslate(): bool
+    {
+        return $this->translate !== null;
+    }
+
+    /**
+     * @return \Elements\AttributeValue
+     * @throws \DomainException
+     */
+    public function getTitle(): AttributeValue
+    {
+        if (!$this->hasTitle()) {
+            throw new DomainException('Property title is not set.');
+        }
+
+        return $this->title;
+    }
+
+    /**
+     * @param \Elements\AttributeValue $title
+     */
+    public function setTitle(AttributeValue $title): void
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return bool
+     * @psalm-assert-if-true !null $this->title
+     */
+    public function hasTitle(): bool
+    {
+        return $this->title !== null;
+    }
+
+    /**
+     * @return \Elements\Number\IntegerValue
+     * @throws \DomainException
+     */
+    public function getTabIndex(): IntegerValue
+    {
+        if (!$this->hasTabIndex()) {
+            throw new DomainException('Property tabindex is not set.');
+        }
+
+        return $this->tabIndex;
+    }
+
+    /**
+     * @param \Elements\Number\IntegerValue $tabIndex
+     */
+    public function setTabIndex(IntegerValue $tabIndex): void
+    {
+        $this->tabIndex = $tabIndex;
+    }
+
+    /**
+     * @return bool
+     * @psalm-assert-if-true !null $this->tabIndex
+     */
+    public function hasTabIndex(): bool
+    {
+        return $this->tabIndex !== null;
+    }
+
+    /**
+     * @return string
+     * @throws \DomainException
+     */
+    public function getNonce(): string
+    {
+        if (!$this->hasNonce()) {
+            throw new DomainException('Property nonce is not set.');
+        }
+
+        return $this->nonce;
+    }
+
+    /**
+     * @param string $nonce
+     */
+    public function setNonce(string $nonce): void
+    {
+        $this->nonce = $nonce;
+    }
+
+    /**
+     * @return bool
+     * @psalm-assert-if-true !null $this->nonce
+     */
+    public function hasNonce(): bool
+    {
+        return $this->nonce !== null;
+    }
+
+    /**
+     * @return string
+     * @throws \DomainException
+     */
+    public function getStyle(): string
+    {
+        if (!$this->hasStyle()) {
+            throw new DomainException('Property style is not set.');
+        }
+
+        return $this->style;
+    }
+
+    /**
+     * @param string $style
+     */
+    public function setStyle(string $style): void
+    {
+        $this->style = $style;
+    }
+
+    /**
+     * @return bool
+     * @psalm-assert-if-true !null $this->style
+     */
+    public function hasStyle(): bool
+    {
+        return $this->style !== null;
+    }
+
+    /**
+     * @return \Elements\Keyword\LanguageKeyword
+     * @throws \DomainException
+     */
+    public function getLang(): LanguageKeyword
+    {
+        if (!$this->hasLang()) {
+            throw new DomainException('Property lang is not set.');
+        }
+
+        return $this->lang;
+    }
+
+    /**
+     * @param \Elements\Keyword\LanguageKeyword $lang
+     */
+    public function setLang(LanguageKeyword $lang): void
+    {
+        $this->lang = $lang;
+    }
+
+    /**
+     * @return bool
+     * @psalm-assert-if-true !null $this->lang
+     */
+    public function hasLang(): bool
+    {
+        return $this->lang !== null;
+    }
+
+    /**
+     * @return \Elements\Keyword\SpellcheckKeyword
+     * @throws \DomainException
+     */
+    public function getSpellcheck(): SpellcheckKeyword
+    {
+        if (!$this->hasSpellcheck()) {
+            throw new DomainException('Property spellcheck is not set.');
+        }
+
+        return $this->spellcheck;
+    }
+
+    /**
+     * @param \Elements\Keyword\SpellcheckKeyword $spellcheck
+     */
+    public function setSpellcheck(SpellcheckKeyword $spellcheck): void
+    {
+        $this->spellcheck = $spellcheck;
+    }
+
+    /**
+     * @return bool
+     * @psalm-assert-if-true !null $this->spellcheck
+     */
+    public function hasSpellcheck(): bool
+    {
+        return $this->spellcheck !== null;
+    }
+
+    /**
+     * @return \Elements\Microsyntax\SpaceSeparatedTokens\UnorderedUniqueSpaceSeparatedTokens
+     * @throws \DomainException
+     */
+    public function getItemType(): UnorderedUniqueSpaceSeparatedTokens
+    {
+        if (!$this->hasItemType()) {
+            throw new DomainException('Property itemtype is not set.');
+        }
+
+        return $this->itemType;
+    }
+
+    /**
+     * @param \Elements\Microsyntax\SpaceSeparatedTokens\UnorderedUniqueSpaceSeparatedTokens $itemType
+     */
+    public function setItemType(UnorderedUniqueSpaceSeparatedTokens $itemType): void
+    {
+        $this->itemType = $itemType;
+    }
+
+    /**
+     * @return bool
+     * @psalm-assert-if-true !null $this->itemType
+     */
+    public function hasItemType(): bool
+    {
+        return $this->itemType !== null;
+    }
+
+    /**
+     * @return \Elements\BooleanAttribute
+     */
+    public function getItemScope(): BooleanAttribute
+    {
+        return $this->itemScope;
+    }
+
+    public function setItemScope(): void
+    {
+        $this->itemScope = BooleanAttribute::true();
+    }
+
+    public function resetItemScope(): void
+    {
+        $this->itemScope = BooleanAttribute::false();
+    }
+
+    /**
+     * @return \Elements\Microsyntax\SpaceSeparatedTokens\UnorderedUniqueSpaceSeparatedTokens
+     * @throws \DomainException
+     */
+    public function getItemRef(): UnorderedUniqueSpaceSeparatedTokens
+    {
+        if (!$this->hasItemRef()) {
+            throw new DomainException('Property itemref is not set.');
+        }
+
+        return $this->itemRef;
+    }
+
+    /**
+     * @param \Elements\Microsyntax\SpaceSeparatedTokens\UnorderedUniqueSpaceSeparatedTokens $itemRef
+     */
+    public function setItemRef(UnorderedUniqueSpaceSeparatedTokens $itemRef): void
+    {
+        $this->itemRef = $itemRef;
+    }
+
+    /**
+     * @return bool
+     * @psalm-assert-if-true !null $this->itemRef
+     */
+    public function hasItemRef(): bool
+    {
+        return $this->itemRef !== null;
+    }
+
+    /**
+     * @return \Elements\Microsyntax\SpaceSeparatedTokens\UnorderedUniqueSpaceSeparatedTokens
+     * @throws \DomainException
+     */
+    public function getItemProp(): UnorderedUniqueSpaceSeparatedTokens
+    {
+        if (!$this->hasItemProp()) {
+            throw new DomainException('Property itemprop is not set.');
+        }
+
+        return $this->itemProp;
+    }
+
+    /**
+     * @param \Elements\Microsyntax\SpaceSeparatedTokens\UnorderedUniqueSpaceSeparatedTokens $itemProp
+     */
+    public function setItemProp(UnorderedUniqueSpaceSeparatedTokens $itemProp): void
+    {
+        $this->itemProp = $itemProp;
+    }
+
+    /**
+     * @return bool
+     * @psalm-assert-if-true !null $this->itemProp
+     */
+    public function hasItemProp(): bool
+    {
+        return $this->itemProp !== null;
+    }
+
+    /**
+     * @return \Elements\Url\UrlPotentiallySurroundedBySpaces
+     * @throws \DomainException
+     */
+    public function getItemId(): UrlPotentiallySurroundedBySpaces
+    {
+        if (!$this->hasItemId()) {
+            throw new DomainException('Property itemid is not set.');
+        }
+
+        return $this->itemId;
+    }
+
+    /**
+     * @param \Elements\Url\UrlPotentiallySurroundedBySpaces $itemId
+     */
+    public function setItemId(UrlPotentiallySurroundedBySpaces $itemId): void
+    {
+        $this->itemId = $itemId;
+    }
+
+    /**
+     * @return bool
+     * @psalm-assert-if-true !null $this->itemId
+     */
+    public function hasItemId(): bool
+    {
+        return $this->itemId !== null;
+    }
+
+    /**
+     * @return \Elements\Keyword\CustomElementName
+     * @throws \DomainException
+     */
+    public function getIs(): CustomElementName
+    {
+        if (!$this->is) {
+            throw new DomainException('Property is is not set.');
+        }
+
+        return $this->is;
+    }
+
+    /**
+     * @param \Elements\Keyword\CustomElementName $is
+     */
+    public function setIs(CustomElementName $is): void
+    {
+        $this->is = $is;
+    }
+
+    /**
+     * @return bool
+     * @psalm-assert-if-true !null $this->is
+     */
+    public function hasIs(): bool
+    {
+        return $this->is !== null;
+    }
+
+    /**
+     * @return \Elements\Keyword\InputModeKeyword
+     * @throws \DomainException
+     */
+    public function getInputMode(): InputModeKeyword
+    {
+        if (!$this->hasInputMode()) {
+            throw new DomainException('Property inputmode is not set.');
+        }
+
+        return $this->inputMode;
+    }
+
+    /**
+     * @param \Elements\Keyword\InputModeKeyword $inputMode
+     */
+    public function setInputMode(InputModeKeyword $inputMode): void
+    {
+        $this->inputMode = $inputMode;
+    }
+
+    /**
+     * @return bool
+     * @psalm-assert-if-true !null $this->inputMode
+     */
+    public function hasInputMode(): bool
+    {
+        return $this->inputMode !== null;
+    }
+
+    /**
+     * @return \Elements\BooleanAttribute
+     */
+    public function getHidden(): BooleanAttribute
+    {
+        return $this->hidden;
+    }
+
+    public function setHidden(): void
+    {
+        $this->hidden = BooleanAttribute::true();
+    }
+
+    public function resetHidden(): void
+    {
+        $this->hidden = BooleanAttribute::false();
     }
 
     /**

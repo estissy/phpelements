@@ -135,12 +135,6 @@ abstract class Element extends Node
     protected ?IntegerValue $tabIndex = null;
 
     /**
-     * The title attribute represents advisory information for the element, such as would be appropriate for a tooltip.
-     * On a link, this could be the title or a description of the target resource; on an image, it could be the image
-     * credit or a description of the image; on a paragraph, it could be a footnote or commentary on the text; on a
-     * citation, it could be further information about the source; on interactive content, it could be a label for, or
-     * instructions for, use of the element; and so forth. The value is text.
-     *
      * @var null|\Elements\TextValue
      */
     protected ?TextValue $title = null;

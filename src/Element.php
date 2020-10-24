@@ -113,10 +113,10 @@ abstract class Element extends Node
     protected ?LanguageKeyword $lang = null;
 
     /**
-     * @var null|string
+     * @var null|\Elements\TextValue
      * @TODO: Implement this
      */
-    protected string $nonce;
+    protected ?TextValue $nonce = null;
 
     /**
      * @var null|\Elements\Keyword\SpellcheckKeyword
@@ -124,10 +124,10 @@ abstract class Element extends Node
     protected ?SpellcheckKeyword $spellcheck = null;
 
     /**
-     * @var null|string
+     * @var null|\Elements\TextValue
      * @TODO: Implement this
      */
-    protected ?string $style = null;
+    protected ?TextValue $style = null;
 
     /**
      * @var null|\Elements\Number\IntegerValue
@@ -141,9 +141,9 @@ abstract class Element extends Node
      * citation, it could be further information about the source; on interactive content, it could be a label for, or
      * instructions for, use of the element; and so forth. The value is text.
      *
-     * @var null|\Elements\AttributeValue
+     * @var null|\Elements\TextValue
      */
-    protected ?AttributeValue $title = null;
+    protected ?TextValue $title = null;
 
     /**
      * @var null|\Elements\Keyword\TranslateKeyword
@@ -193,10 +193,10 @@ abstract class Element extends Node
     }
 
     /**
-     * @return \Elements\AttributeValue
+     * @return \Elements\TextValue
      * @throws \DomainException
      */
-    public function getTitle(): AttributeValue
+    public function getTitle(): TextValue
     {
         if (!$this->hasTitle()) {
             throw new DomainException('Property title is not set.');
@@ -206,9 +206,9 @@ abstract class Element extends Node
     }
 
     /**
-     * @param \Elements\AttributeValue $title
+     * @param \Elements\TextValue $title
      */
-    public function setTitle(AttributeValue $title): void
+    public function setTitle(TextValue $title): void
     {
         $this->title = $title;
     }
@@ -253,10 +253,10 @@ abstract class Element extends Node
     }
 
     /**
-     * @return string
+     * @return \Elements\TextValue
      * @throws \DomainException
      */
-    public function getNonce(): string
+    public function getNonce(): TextValue
     {
         if (!$this->hasNonce()) {
             throw new DomainException('Property nonce is not set.');
@@ -266,9 +266,9 @@ abstract class Element extends Node
     }
 
     /**
-     * @param string $nonce
+     * @param \Elements\TextValue $nonce
      */
-    public function setNonce(string $nonce): void
+    public function setNonce(TextValue $nonce): void
     {
         $this->nonce = $nonce;
     }
@@ -283,10 +283,10 @@ abstract class Element extends Node
     }
 
     /**
-     * @return string
+     * @return \Elements\TextValue
      * @throws \DomainException
      */
-    public function getStyle(): string
+    public function getStyle(): TextValue
     {
         if (!$this->hasStyle()) {
             throw new DomainException('Property style is not set.');
@@ -296,9 +296,9 @@ abstract class Element extends Node
     }
 
     /**
-     * @param string $style
+     * @param \Elements\TextValue $style
      */
-    public function setStyle(string $style): void
+    public function setStyle(TextValue $style): void
     {
         $this->style = $style;
     }

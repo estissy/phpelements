@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
+use Elements\Element\Head;
+use Elements\Element\Html;
 use Elements\Element\P;
+use Elements\Element\Title;
 use Elements\Keyword\AutocapitalizeKeyword;
 use Elements\Keyword\ContentEditableKeyword;
 use Elements\Keyword\CustomElementName;
@@ -70,5 +73,19 @@ $someParagraph->setTranslate(TranslateKeyword::yes());
 $someParagraph->appendNode($secondLevel);
 $someParagraph->appendNode($secondSubLevel);
 $someParagraph->appendNode(new Text(']:-)'));
+$someParagraph->appendNode(new Text('World :-)'));
 
-echo $someParagraph;
+$title = new Title();
+$title->appendNode(new Text('My personal website :-)'));
+
+$head = new Head();
+
+$head->appendNode($title);
+
+$html = new Html();
+$html->appendNode($head);
+
+$link = new \Elements\Element\Link();
+
+
+echo $link->getHref();

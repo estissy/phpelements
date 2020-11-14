@@ -4,7 +4,15 @@ declare(strict_types=1);
 
 namespace Elements\Category;
 
-interface PhrasingContentInterface
+/**
+ * Interface PhrasingContentInterface
+ *
+ * @package Elements\Category
+ */
+interface PhrasingContentInterface extends
+    EmbeddedContentInterface,
+    InteractiveContentInterface,
+    MetadataContentInterface
 {
 
 }

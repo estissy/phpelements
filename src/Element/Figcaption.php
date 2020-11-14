@@ -6,20 +6,17 @@ namespace Elements\Element;
 
 use DomainException;
 use Elements\Category\FlowContentInterface;
-use Elements\Category\PalpableContentInterface;
-use Elements\Category\PhrasingContentInterface;
 use Elements\NestedElement;
 use Elements\Node;
-use Elements\Text;
 
 /**
- * Class P
+ * Class Figcaption
  *
  * @package Elements\Element
  */
-class P extends NestedElement implements FlowContentInterface, PalpableContentInterface
+class Figcaption extends NestedElement implements FlowContentInterface
 {
-    private const TAG = 'p';
+    private const TAG = 'figcaption';
 
     public function __construct()
     {
@@ -33,7 +30,7 @@ class P extends NestedElement implements FlowContentInterface, PalpableContentIn
      */
     public function appendNode(Node $node): void
     {
-        if (!($node instanceof PhrasingContentInterface) && !($node instanceof Text)) {
+        if (!($node instanceof FlowContentInterface)) {
             throw new DomainException('');
         }
 

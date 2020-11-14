@@ -510,7 +510,7 @@ abstract class Element extends Node
      */
     public function getIs(): CustomElementName
     {
-        if (!$this->is) {
+        if (!$this->hasIs()) {
             throw new DomainException('Property is is not set.');
         }
 

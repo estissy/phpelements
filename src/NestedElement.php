@@ -31,7 +31,7 @@ abstract class NestedElement extends Element
      */
     public function hasNodes(): bool
     {
-        return !empty($this->nodes);
+        return count($this->nodes) > 0;
     }
 
     /**

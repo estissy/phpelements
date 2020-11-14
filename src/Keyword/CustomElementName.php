@@ -34,7 +34,7 @@ class CustomElementName extends AttributeValue
      */
     public function __construct(string $value)
     {
-        if (in_array($value, self::INVALID_NAMES)) {
+        if (in_array($value, self::INVALID_NAMES, true)) {
             throw new DomainException('Invalid custom element name.');
         }
 

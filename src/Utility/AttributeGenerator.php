@@ -64,7 +64,7 @@ class AttributeGenerator
     {
         return array_filter(
             $properties,
-            static function (ReflectionProperty $reflectionProperty) {
+            static function (ReflectionProperty $reflectionProperty): bool {
                 $reflectionPropertyType = $reflectionProperty->getType();
 
                 return $reflectionPropertyType instanceof ReflectionNamedType
@@ -101,7 +101,7 @@ class AttributeGenerator
     {
         return array_filter(
             $properties,
-            static function (ReflectionProperty $reflectionProperty) {
+            static function (ReflectionProperty $reflectionProperty): bool {
                 $reflectionPropertyType = $reflectionProperty->getType();
 
                 return $reflectionPropertyType instanceof ReflectionNamedType &&
@@ -120,7 +120,7 @@ class AttributeGenerator
     {
         return array_filter(
             $booleanProperties,
-            static function (ReflectionProperty $reflectionProperty) use ($tagElement) {
+            static function (ReflectionProperty $reflectionProperty) use ($tagElement): bool {
                 $reflectionProperty->setAccessible(true);
 
                 return BooleanAttribute::true()->equal($reflectionProperty->getValue($tagElement));

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 use Elements\Element\Head;
 use Elements\Element\Html;
+use Elements\Element\Li;
+use Elements\Element\Link;
+use Elements\Element\Ol;
 use Elements\Element\P;
 use Elements\Element\Title;
 use Elements\Keyword\AutocapitalizeKeyword;
@@ -85,7 +88,10 @@ $head->appendNode($title);
 $html = new Html();
 $html->appendNode($head);
 
-$link = new \Elements\Element\Link();
+$link = new Link();
+$ol = new Ol();
+$someLi = new Li();
+$someLi->appendNode(new Text('Hello'));
+$ol->appendNode($someLi);
 
-
-echo $link->getHref();
+echo $ol;

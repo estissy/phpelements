@@ -4,7 +4,15 @@ declare(strict_types=1);
 
 namespace Elements\Category;
 
-interface FlowContentInterface
+/**
+ * Interface FlowContentInterface
+ *
+ * @package Elements\Category
+ */
+interface FlowContentInterface extends
+    PhrasingContentInterface,
+    HeadingContentInterface,
+    SectioningContentInterface
 {
 
 }

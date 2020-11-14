@@ -10,16 +10,15 @@ use Elements\Category\PalpableContentInterface;
 use Elements\Category\PhrasingContentInterface;
 use Elements\NestedElement;
 use Elements\Node;
-use Elements\Text;
 
 /**
- * Class P
+ * Class Pre
  *
  * @package Elements\Element
  */
-class P extends NestedElement implements FlowContentInterface, PalpableContentInterface
+class Pre extends NestedElement implements FlowContentInterface, PalpableContentInterface
 {
-    private const TAG = 'p';
+    private const TAG = 'pre';
 
     public function __construct()
     {
@@ -33,7 +32,7 @@ class P extends NestedElement implements FlowContentInterface, PalpableContentIn
      */
     public function appendNode(Node $node): void
     {
-        if (!($node instanceof PhrasingContentInterface) && !($node instanceof Text)) {
+        if (!($node instanceof PhrasingContentInterface)) {
             throw new DomainException('');
         }
 

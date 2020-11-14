@@ -25,7 +25,7 @@ class BrowserContextName extends AttributeValue
             throw new DomainException('');
         }
 
-        if ($value[0] = '_') {
+        if ($value[0] === '_') {
             throw new DomainException('');
         }
 

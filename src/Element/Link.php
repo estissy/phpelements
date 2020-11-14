@@ -7,7 +7,6 @@ namespace Elements\Element;
 use Elements\BooleanAttribute;
 use Elements\Category\FlowContentInterface;
 use Elements\Category\MetadataContentInterface;
-use Elements\Category\PhrasingContentInterface;
 use Elements\Exception\PropertyNotSetException;
 use Elements\Keyword\CORSSettingKeyword;
 use Elements\Keyword\DestinationKeyword;
@@ -23,7 +22,7 @@ use Elements\VoidElement;
  *
  * @package Elements\Element
  */
-class Link extends VoidElement implements MetadataContentInterface, FlowContentInterface, PhrasingContentInterface
+class Link extends VoidElement implements MetadataContentInterface, FlowContentInterface
 {
     private const TAG = 'link';
 

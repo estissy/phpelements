@@ -1,0 +1,9 @@
+parameters:
+	level: 8
+	paths:
+		- src
+		- tests
+	ignoreErrors:
+	    - '#Method [\s\S]+ should return [\s\S]+ but returns [\s\S]+\|null.#'
+	checkUninitializedProperties: true
+	checkTooWideReturnTypesInProtectedAndPublicMethods: true

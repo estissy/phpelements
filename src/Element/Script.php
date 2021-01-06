@@ -11,7 +11,7 @@ use Elements\Category\ScriptSupportingElementInterface;
 use Elements\Exception\PropertyNotSetException;
 use Elements\Keyword\CORSSettingKeyword;
 use Elements\Keyword\ReferencePolicyKeyword;
-use Elements\NestedElement;
+use Elements\Core\Element;
 use Elements\TextValue;
 use Elements\Url\UrlPotentiallySurroundedBySpaces;
 
@@ -20,7 +20,7 @@ use Elements\Url\UrlPotentiallySurroundedBySpaces;
  *
  * @package Elements\Element
  */
-class Script extends NestedElement implements
+class Script extends Element implements
     MetadataContentInterface,
     FlowContentInterface,
     ScriptSupportingElementInterface

@@ -4,14 +4,9 @@ declare(strict_types=1);
 
 namespace Elements\Element;
 
-use Elements\NestedElement;
+use Elements\Core\Element;
 
-/**
- * Class Tr
- *
- * @package Elements\Element
- */
-class Tr extends NestedElement
+class Tr extends Element
 {
     private const TAG = 'tr';
 

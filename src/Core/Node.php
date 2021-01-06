@@ -2,12 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Elements;
+namespace Elements\Core;
 
 /**
- * Class Node
- *
- * @package Elements
+ * @package Elements\Architecture
  */
 abstract class Node
 {

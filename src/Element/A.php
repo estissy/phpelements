@@ -6,11 +6,11 @@ namespace Elements\Element;
 
 use Elements\Category\FlowContentInterface;
 use Elements\Category\PalpableContentInterface;
+use Elements\Core\Element;
 use Elements\Exception\PropertyNotSetException;
 use Elements\Keyword\LinkType;
 use Elements\Keyword\ReferencePolicyKeyword;
 use Elements\Microsyntax\SpaceSeparatedTokens\SpaceSeparatedTokens;
-use Elements\NestedElement;
 use Elements\TextValue;
 use Elements\Url\UrlPotentiallySurroundedBySpaces;
 
@@ -19,7 +19,7 @@ use Elements\Url\UrlPotentiallySurroundedBySpaces;
  *
  * @package Elements\Element
  */
-class A extends NestedElement implements FlowContentInterface, PalpableContentInterface
+class A extends Element implements FlowContentInterface, PalpableContentInterface
 {
     private const TAG = 'a';
 

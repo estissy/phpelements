@@ -10,7 +10,7 @@ use Elements\Exception\PropertyNotSetException;
 use Elements\Keyword\BrowserContextKeyword;
 use Elements\Microsyntax\BrowserContextName;
 use Elements\Url\UrlPotentiallySurroundedBySpaces;
-use Elements\VoidElement;
+use Elements\Core\VoidElement;
 
 /**
  * Class Base

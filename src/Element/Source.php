@@ -7,7 +7,7 @@ namespace Elements\Element;
 use Elements\Exception\PropertyNotSetException;
 use Elements\TextValue;
 use Elements\Url\UrlPotentiallySurroundedBySpaces;
-use Elements\VoidElement;
+use Elements\Core\VoidElement;
 
 /**
  * Class Source

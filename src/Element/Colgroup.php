@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Elements\Element;
 
 use Elements\Exception\PropertyNotSetException;
-use Elements\NestedElement;
+use Elements\Core\Element;
 use Elements\Number\IntegerValue;
 
 /**
@@ -13,7 +13,7 @@ use Elements\Number\IntegerValue;
  *
  * @package Elements\Element
  */
-class Colgroup extends NestedElement
+class Colgroup extends Element
 {
     private const TAG = 'colgroup';
 

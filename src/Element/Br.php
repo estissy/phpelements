@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Elements\Element;
 
 use Elements\Category\FlowContentInterface;
-use Elements\VoidElement;
+use Elements\Core\VoidElement;
 
 /**
  * Class Br

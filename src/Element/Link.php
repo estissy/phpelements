@@ -15,7 +15,7 @@ use Elements\Keyword\ReferencePolicyKeyword;
 use Elements\Microsyntax\SpaceSeparatedTokens\UnorderedUniqueSpaceSeparatedTokens;
 use Elements\TextValue;
 use Elements\Url\UrlPotentiallySurroundedBySpaces;
-use Elements\VoidElement;
+use Elements\Core\VoidElement;
 
 /**
  * Class Link

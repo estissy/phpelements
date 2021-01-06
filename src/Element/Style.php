@@ -7,8 +7,8 @@ namespace Elements\Element;
 use DomainException;
 use Elements\Category\MetadataContentInterface;
 use Elements\Exception\PropertyNotSetException;
-use Elements\NestedElement;
-use Elements\Node;
+use Elements\Core\Element;
+use Elements\Core\Node;
 use Elements\Text;
 use Elements\TextValue;
 
@@ -17,7 +17,7 @@ use Elements\TextValue;
  *
  * @package Elements\Element
  */
-class Style extends NestedElement implements MetadataContentInterface
+class Style extends Element implements MetadataContentInterface
 {
     private const TAG = 'style';
 
@@ -59,19 +59,5 @@ class Style extends NestedElement implements MetadataContentInterface
     public function hasMedia(): bool
     {
         return $this->media !== null;
-    }
-
-    /**
-     * @param \Elements\Node $node
-     *
-     * @throws \DomainException
-     */
-    public function appendNode(Node $node): void
-    {
-        if (!($node instanceof Text)) {
-            throw new DomainException('');
-        }
-
-        parent::appendNode($node);
     }
 }

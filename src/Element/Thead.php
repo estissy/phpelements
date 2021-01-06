@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Elements\Element;
 
-use Elements\NestedElement;
+use Elements\Core\Element;
 
 /**
  * Class Thead
  *
  * @package Elements\Element
  */
-class Thead extends NestedElement
+class Thead extends Element
 {
     private const TAG = 'thead';
 

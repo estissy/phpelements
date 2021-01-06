@@ -7,7 +7,7 @@ namespace Elements\Element;
 use Elements\Category\FlowContentInterface;
 use Elements\Category\PalpableContentInterface;
 use Elements\Exception\PropertyNotSetException;
-use Elements\NestedElement;
+use Elements\Core\Element;
 use Elements\TextValue;
 
 /**
@@ -15,9 +15,9 @@ use Elements\TextValue;
  *
  * @package Elements\Element
  */
-class Label extends NestedElement implements FlowContentInterface, PalpableContentInterface
+class Label extends Element implements FlowContentInterface, PalpableContentInterface
 {
-    private const TAG = 'label';
+    private const TAG = 'nameLabel';
 
     /**
      * @var null|\Elements\TextValue

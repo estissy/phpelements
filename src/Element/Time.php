@@ -7,7 +7,7 @@ namespace Elements\Element;
 use Elements\Category\FlowContentInterface;
 use Elements\Category\PalpableContentInterface;
 use Elements\Exception\PropertyNotSetException;
-use Elements\NestedElement;
+use Elements\Core\Element;
 use Elements\TextValue;
 
 /**
@@ -15,7 +15,7 @@ use Elements\TextValue;
  *
  * @package Elements\Element
  */
-class Time extends NestedElement implements FlowContentInterface, PalpableContentInterface
+class Time extends Element implements FlowContentInterface, PalpableContentInterface
 {
     private const TAG = 'time';
 

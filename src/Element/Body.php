@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Elements\Element;
 
 use Elements\Category\SectioningContentInterface;
-use Elements\NestedElement;
+use Elements\Core\Element;
 
 /**
  * Class Body
@@ -13,7 +13,7 @@ use Elements\NestedElement;
  *
  * @package Elements\Element
  */
-class Body extends NestedElement implements SectioningContentInterface
+class Body extends Element implements SectioningContentInterface
 {
     private const TAG = 'body';
 

@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Elements;
+namespace Elements\Core;
 
 use DomainException;
+use Elements\BooleanAttribute;
 use Elements\Keyword\AutocapitalizeKeyword;
 use Elements\Keyword\ContentEditableKeyword;
 use Elements\Keyword\CustomElementName;
@@ -18,14 +19,10 @@ use Elements\Keyword\TranslateKeyword;
 use Elements\Microsyntax\SpaceSeparatedTokens\OrderedUniqueSpaceSeparatedTokens;
 use Elements\Microsyntax\SpaceSeparatedTokens\UnorderedUniqueSpaceSeparatedTokens;
 use Elements\Number\IntegerValue;
+use Elements\TextValue;
 use Elements\Url\UrlPotentiallySurroundedBySpaces;
 
-/**
- * Class Element
- *
- * @package Elements
- */
-abstract class Element extends Node
+abstract class HTMLNode extends NodeContainer
 {
     /**
      * @var string

@@ -6,6 +6,7 @@ namespace Elements\Element;
 
 use Elements\BooleanAttribute;
 use Elements\Category\FlowContentInterface;
+use Elements\Core\VoidElement;
 use Elements\Exception\PropertyNotSetException;
 use Elements\Keyword\EnctypeKeyword;
 use Elements\Keyword\MethodKeyword;
@@ -14,7 +15,6 @@ use Elements\Microsyntax\CommaSeparatedTokens;
 use Elements\Number\IntegerValue;
 use Elements\TextValue;
 use Elements\Url\UrlPotentiallySurroundedBySpaces;
-use Elements\VoidElement;
 
 /**
  * Class Input
@@ -177,7 +177,7 @@ class Input extends VoidElement implements FlowContentInterface
      */
     private ?IntegerValue $width = null;
 
-    public function __construct(string $tag)
+    public function __construct()
     {
         $this->checked = BooleanAttribute::false();
         $this->disabled = BooleanAttribute::false();
@@ -186,7 +186,7 @@ class Input extends VoidElement implements FlowContentInterface
         $this->readOnly = BooleanAttribute::false();
         $this->required = BooleanAttribute::false();
 
-        parent::__construct($tag);
+        parent::__construct(self::TAG);
     }
 
     /**

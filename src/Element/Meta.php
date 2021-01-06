@@ -8,7 +8,7 @@ use Elements\Category\MetadataContentInterface;
 use Elements\Exception\PropertyNotSetException;
 use Elements\Keyword\HttpEquivKeyword;
 use Elements\TextValue;
-use Elements\VoidElement;
+use Elements\Core\VoidElement;
 
 /**
  * Class Meta

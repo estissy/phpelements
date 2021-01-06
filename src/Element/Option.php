@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Elements\Element;
 
 use Elements\BooleanAttribute;
+use Elements\Core\Element;
 use Elements\Exception\PropertyNotSetException;
-use Elements\NestedElement;
 use Elements\TextValue;
 
 /**
@@ -14,7 +14,7 @@ use Elements\TextValue;
  *
  * @package Elements\Element
  */
-class Option extends NestedElement
+class Option extends Element
 {
     private const TAG = 'option';
 
@@ -79,7 +79,7 @@ class Option extends NestedElement
     public function getLabel(): TextValue
     {
         if (!$this->hasLabel()) {
-            throw new PropertyNotSetException('label');
+            throw new PropertyNotSetException('nameLabel');
         }
 
         return $this->label;

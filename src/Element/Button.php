@@ -7,11 +7,11 @@ namespace Elements\Element;
 use Elements\BooleanAttribute;
 use Elements\Category\FlowContentInterface;
 use Elements\Category\PalpableContentInterface;
+use Elements\Core\Element;
 use Elements\Exception\PropertyNotSetException;
 use Elements\Keyword\ButtonTypeKeyword;
 use Elements\Keyword\EnctypeKeyword;
 use Elements\Keyword\MethodKeyword;
-use Elements\NestedElement;
 use Elements\TextValue;
 use Elements\Url\UrlPotentiallySurroundedBySpaces;
 
@@ -20,7 +20,7 @@ use Elements\Url\UrlPotentiallySurroundedBySpaces;
  *
  * @package Elements\Element
  */
-class Button extends NestedElement implements FlowContentInterface, PalpableContentInterface
+class Button extends Element implements FlowContentInterface, PalpableContentInterface
 {
     private const TAG = 'button';
 

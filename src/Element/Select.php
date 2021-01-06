@@ -8,11 +8,11 @@ use Elements\BooleanAttribute;
 use Elements\Category\FlowContentInterface;
 use Elements\Category\PalpableContentInterface;
 use Elements\Exception\PropertyNotSetException;
-use Elements\NestedElement;
+use Elements\Core\Element;
 use Elements\Number\IntegerValue;
 use Elements\TextValue;
 
-class Select extends NestedElement implements FlowContentInterface, PalpableContentInterface
+class Select extends Element implements FlowContentInterface, PalpableContentInterface
 {
     private const TAG = 'select';
 

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Elements\Element;
 
 use DomainException;
-use Elements\NestedElement;
+use Elements\Core\Element;
 use Elements\Url\UrlPotentiallySurroundedBySpaces;
 
 /**
@@ -13,7 +13,7 @@ use Elements\Url\UrlPotentiallySurroundedBySpaces;
  *
  * @package Elements\Element
  */
-class Html extends NestedElement
+class Html extends Element
 {
     private const TAG = 'html';
 

@@ -6,14 +6,14 @@ namespace Elements\Element;
 
 use Elements\Category\FlowContentInterface;
 use Elements\Category\PalpableContentInterface;
-use Elements\NestedElement;
+use Elements\Core\Element;
 
 /**
  * Class Sub
  *
  * @package Elements\Element
  */
-class Sub extends NestedElement implements FlowContentInterface, PalpableContentInterface
+class Sub extends Element implements FlowContentInterface, PalpableContentInterface
 {
     private const TAG = 'sub';
 

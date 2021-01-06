@@ -7,7 +7,7 @@ namespace Elements\Element;
 use Elements\Category\FlowContentInterface;
 use Elements\Category\PalpableContentInterface;
 use Elements\Exception\PropertyNotSetException;
-use Elements\NestedElement;
+use Elements\Core\Element;
 use Elements\TextValue;
 use Elements\Url\UrlPotentiallySurroundedBySpaces;
 
@@ -16,7 +16,7 @@ use Elements\Url\UrlPotentiallySurroundedBySpaces;
  *
  * @package Elements\Element
  */
-class Del extends NestedElement implements FlowContentInterface, PalpableContentInterface
+class Del extends Element implements FlowContentInterface, PalpableContentInterface
 {
     private const TAG = 'del';
 

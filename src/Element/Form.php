@@ -12,7 +12,7 @@ use Elements\Keyword\AutocompleteKeyword;
 use Elements\Keyword\EnctypeKeyword;
 use Elements\Keyword\LinkType;
 use Elements\Keyword\MethodKeyword;
-use Elements\NestedElement;
+use Elements\Core\Element;
 use Elements\TextValue;
 use Elements\Url\UrlPotentiallySurroundedBySpaces;
 
@@ -21,7 +21,7 @@ use Elements\Url\UrlPotentiallySurroundedBySpaces;
  *
  * @package Elements\Element
  */
-class Form extends NestedElement implements FlowContentInterface, PalpableContentInterface
+class Form extends Element implements FlowContentInterface, PalpableContentInterface
 {
     private const TAG = 'form';
 

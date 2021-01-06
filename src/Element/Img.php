@@ -13,7 +13,7 @@ use Elements\Keyword\LazyLoadingKeyword;
 use Elements\Keyword\ReferencePolicyKeyword;
 use Elements\TextValue;
 use Elements\Url\UrlPotentiallySurroundedBySpaces;
-use Elements\VoidElement;
+use Elements\Core\VoidElement;
 
 /**
  * Class Img

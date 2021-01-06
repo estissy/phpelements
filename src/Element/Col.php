@@ -6,7 +6,7 @@ namespace Elements\Element;
 
 use Elements\Exception\PropertyNotSetException;
 use Elements\Number\IntegerValue;
-use Elements\VoidElement;
+use Elements\Core\VoidElement;
 
 /**
  * Class Col

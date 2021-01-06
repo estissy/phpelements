@@ -6,38 +6,32 @@ namespace Elements\Utility;
 
 use Elements\AttributeValue;
 use Elements\BooleanAttribute;
-use Elements\Element;
+use Elements\Core\HTMLNode;
 use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionProperty;
 
-/**
- * Class AttributeGenerator
- *
- * @package Elements\Utility
- */
 class AttributeGenerator
 {
     /**
-     * @param \Elements\Element $tagElement
+     * @param \Elements\Core\HTMLNode $htmlNode
      *
      * @return string
-     * @throws \ReflectionException
      */
-    public static function generate(Element $tagElement): string
+    public static function generate(HTMLNode $htmlNode): string
     {
-        $elementReflection = new ReflectionClass($tagElement);
+        $elementReflection = new ReflectionClass($htmlNode);
         $properties = $elementReflection->getProperties();
 
         $attributeProperties = self::getAttributeProperties($properties);
-        $notNullProperties = self::getNotNullProperties($attributeProperties, $tagElement);
+        $notNullProperties = self::getNotNullProperties($attributeProperties, $htmlNode);
 
         $booleanAttributeProperties = self::getBooleanAttributeProperties($properties);
-        $trueBooleanAttributeProperties = self::getTrueBooleanProperties($booleanAttributeProperties, $tagElement);
+        $trueBooleanAttributeProperties = self::getTrueBooleanProperties($booleanAttributeProperties, $htmlNode);
         $trueBooleanAttributePropertyNames = self::getPropertyNames($trueBooleanAttributeProperties);
 
         $propertyNames = self::getPropertyNames($notNullProperties);
-        $propertyValues = self::getPropertyValues($notNullProperties, $tagElement);
+        $propertyValues = self::getPropertyValues($notNullProperties, $htmlNode);
 
         $tagAttributes = array_map(
             static fn(string $attributeName, AttributeValue $attributeValue) => sprintf(
@@ -76,18 +70,18 @@ class AttributeGenerator
     /**
      * Filters properties values that are not null.
      *
-     * @param \ReflectionProperty[] $properties
-     * @param \Elements\Element     $tagElement
+     * @param \ReflectionProperty[]   $properties
+     * @param \Elements\Core\HTMLNode $htmlNode
      *
      * @return \ReflectionProperty[]
      */
-    private static function getNotNullProperties(array $properties, Element $tagElement): array
+    private static function getNotNullProperties(array $properties, HTMLNode $htmlNode): array
     {
         return array_filter(
             $properties,
-            static function (ReflectionProperty $reflectionProperty) use ($tagElement): bool {
+            static function (ReflectionProperty $reflectionProperty) use ($htmlNode): bool {
                 $reflectionProperty->setAccessible(true);
-                return $reflectionProperty->getValue($tagElement) !== null;
+                return $reflectionProperty->getValue($htmlNode) !== null;
             }
         );
     }
@@ -111,19 +105,19 @@ class AttributeGenerator
     }
 
     /**
-     * @param \ReflectionProperty[] $booleanProperties
-     * @param \Elements\Element     $tagElement
+     * @param \ReflectionProperty[]   $booleanProperties
+     * @param \Elements\Core\HTMLNode $htmlNode
      *
      * @return \ReflectionProperty[]
      */
-    private static function getTrueBooleanProperties(array $booleanProperties, Element $tagElement): array
+    private static function getTrueBooleanProperties(array $booleanProperties, HTMLNode $htmlNode): array
     {
         return array_filter(
             $booleanProperties,
-            static function (ReflectionProperty $reflectionProperty) use ($tagElement): bool {
+            static function (ReflectionProperty $reflectionProperty) use ($htmlNode): bool {
                 $reflectionProperty->setAccessible(true);
 
-                return BooleanAttribute::true()->equal($reflectionProperty->getValue($tagElement));
+                return BooleanAttribute::true()->equal($reflectionProperty->getValue($htmlNode));
             }
         );
     }
@@ -146,17 +140,17 @@ class AttributeGenerator
     /**
      * Gets properties values.
      *
-     * @param \ReflectionProperty[] $properties
-     * @param \Elements\Element     $tagElement
+     * @param \ReflectionProperty[]   $properties
+     * @param \Elements\Core\HTMLNode $htmlNode
      *
      * @return \Elements\AttributeValue[]
      */
-    private static function getPropertyValues(array $properties, Element $tagElement): array
+    private static function getPropertyValues(array $properties, HTMLNode $htmlNode): array
     {
         return array_map(
-            static function (ReflectionProperty $reflectionProperty) use ($tagElement): AttributeValue {
+            static function (ReflectionProperty $reflectionProperty) use ($htmlNode): AttributeValue {
                 $reflectionProperty->setAccessible(true);
-                return $reflectionProperty->getValue($tagElement);
+                return $reflectionProperty->getValue($htmlNode);
             },
             $properties
         );

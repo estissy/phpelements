@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Elements\Element;
 
-use Elements\NestedElement;
+use Elements\Core\Element;
 
 /**
  * Class Tfoot
  *
  * @package Elements\Element
  */
-class Tfoot extends NestedElement
+class Tfoot extends Element
 {
     private const TAG = 'tfoot';
 

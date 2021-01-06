@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Elements\Element;
 
-use Elements\NestedElement;
+use Elements\Core\Element;
 
 /**
  * Class Caption
  *
  * @package Elements\Element
  */
-class Caption extends NestedElement
+class Caption extends Element
 {
     private const TAG = 'caption';
 }

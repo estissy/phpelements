@@ -6,7 +6,7 @@ namespace Elements\Element;
 
 use Elements\Exception\PropertyNotSetException;
 use Elements\Microsyntax\SpaceSeparatedTokens\UnorderedUniqueSpaceSeparatedTokens;
-use Elements\NestedElement;
+use Elements\Core\Element;
 use Elements\Number\IntegerValue;
 
 /**
@@ -14,7 +14,7 @@ use Elements\Number\IntegerValue;
  *
  * @package Elements\Element
  */
-class Td extends NestedElement
+class Td extends Element
 {
     private const TAG = 'td';
 
